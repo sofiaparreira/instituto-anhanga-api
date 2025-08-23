@@ -1,4 +1,4 @@
-import {Request, Response} from "express";
+import { Request, Response } from "express";
 import { PetModel } from "../models/Pet";
 import Logger from "../../config/logger";
 
@@ -9,21 +9,35 @@ export async function createPet(req: Request, res: Response) {
         return res.status(201).json(pet)
     } catch (e: any) {
         Logger.error(`Erro no sistema ao criar pet: ${e.message}`)
+        return res.status(500)
+
     }
 }
 
-export async function getPetById (req:Request, res:Response) {
+export async function getPetById(req: Request, res: Response) {
     try {
         const id = req.params.id;
         const pet = await PetModel.findById(id);
 
-        if(!pet){
-            return res.status(404).json({error: "Pet não encontrado"})
+        if (!pet) {
+            return res.status(404).json({ error: "Pet não encontrado" })
         }
         return res.status(200).json(pet)
-    } catch (e:any) {
-         Logger.error(`Erro no sistema ao get by id pet: ${e.message}`)
+    } catch (e: any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+        return res.status(500)
+
     }
 }
 
+export async function getAllPets(req: Request, res: Response) {
+    try {
+        const pet = await PetModel.find()
+        return res.status(200).json(pet)
+    } catch (e: any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+        return res.status(500)
+
+    }
+}
 
