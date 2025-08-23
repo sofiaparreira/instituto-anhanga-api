@@ -2,6 +2,8 @@ import {Router, Request, Response} from "express";
 import { createPet, deletePet, getAllPets, getPetById, updatePet } from "../controllers/petController";
 import { validate } from "../middlewares/handleValidation";
 import { petBodyValidation } from "../middlewares/petMiddleware";
+import { login } from "../controllers/userController";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 
 
@@ -9,11 +11,11 @@ const router = Router();
 
 
 export default router
-    .get("/test", (req: Request, res: Response) => {
-    res.status(200).send("API funcionando")
-    })
-    .post("/pet", petBodyValidation(), validate, createPet)
+    .post("/pet", authMiddleware, petBodyValidation(), validate, createPet)
     .get("/pet", getAllPets)
     .get("/pet/:id", getPetById)
-    .delete("/pet/:id", deletePet)
-    .patch("/pet/:id", petBodyValidation(), validate, updatePet);
+    .delete("/pet/:id", authMiddleware, deletePet)
+    .patch("/pet/:id", authMiddleware, petBodyValidation(), validate, updatePet)
+    
+    .post("/login", login)
+    // .post("/register", register);
