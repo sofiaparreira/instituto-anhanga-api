@@ -4,6 +4,8 @@ import { validate } from "../middlewares/handleValidation";
 import { petBodyValidation } from "../middlewares/petMiddleware";
 import { login } from "../controllers/userController";
 import { authMiddleware } from "../middlewares/authMiddleware";
+import { enviaContato } from "../controllers/contatoController";
+import { contatoValidation } from "../middlewares/contatoMiddleware";
 
 
 
@@ -18,4 +20,5 @@ export default router
     .patch("/pet/:id", authMiddleware, petBodyValidation(), validate, updatePet)
     
     .post("/login", login)
+    .post("/contato", contatoValidation(), validate, enviaContato)
     // .post("/register", register);
