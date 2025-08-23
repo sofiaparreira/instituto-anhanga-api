@@ -5,10 +5,14 @@ import express from 'express';
 import config from 'config';
 import db from '../config/db';
 import Logger from "../config/logger";
+import cors from 'cors'
 
 const app = express();
+app.use(cors())
+
 
 app.use(express.json());
+
 
 import router from './routes/router';
 
