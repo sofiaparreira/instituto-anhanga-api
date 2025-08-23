@@ -59,3 +59,23 @@ export async function deletePet(req: Request, res: Response) {
 
     }
 }
+
+
+export async function updatePet (req:Request, res:Response) {
+    try {
+        const id = req.params.id;
+        const body = req.body
+        const pet = await PetModel.findById(id)
+        if(!pet){
+            return res.status(404).json({error: "Pet não encontrado"})
+        }
+
+        await PetModel.updateOne({ _id: id}, body)
+        return res.status(200).json(body);
+
+    } catch (e: any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+        return res.status(500).json({ error: "Erro no sistema, entre em contato com o suporte" })
+
+    }
+}

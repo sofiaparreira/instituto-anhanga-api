@@ -1,5 +1,5 @@
 import {Router, Request, Response} from "express";
-import { createPet, deletePet, getAllPets, getPetById } from "../controllers/petController";
+import { createPet, deletePet, getAllPets, getPetById, updatePet } from "../controllers/petController";
 import { validate } from "../middlewares/handleValidation";
 import { petBodyValidation } from "../middlewares/petMiddleware";
 
@@ -15,4 +15,5 @@ export default router
     .post("/pet", petBodyValidation(), validate, createPet)
     .get("/pet", getAllPets)
     .get("/pet/:id", getPetById)
-    .delete("/pet/:id", deletePet);
+    .delete("/pet/:id", deletePet)
+    .patch("/pet/:id", petBodyValidation(), validate, updatePet);
