@@ -1,9 +1,11 @@
 import {Router, Request, Response} from "express";
-import { createPet, getAllPets, getPetById } from "../controllers/petController";
+import { createPet, deletePet, getAllPets, getPetById } from "../controllers/petController";
 import { validate } from "../middlewares/handleValidation";
 import { petBodyValidation } from "../middlewares/petMiddleware";
-const router = Router();
 
+
+
+const router = Router();
 
 
 export default router
@@ -12,4 +14,5 @@ export default router
     })
     .post("/pet", petBodyValidation(), validate, createPet)
     .get("/pet", getAllPets)
-    .get("/pet/:id", getPetById);
+    .get("/pet/:id", getPetById)
+    .delete("/pet/:id", deletePet);
