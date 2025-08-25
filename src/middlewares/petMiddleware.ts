@@ -30,7 +30,7 @@ export const petBodyValidation = () => {
 
         body("porte")
             .notEmpty().withMessage("O campo 'porte' é obrigatório")
-            .isIn(["pequeno", "médio", "grande"]).withMessage("O campo 'porte' deve ser 'pequeno', 'médio' ou 'grande'"),
+            .isIn(["Pequeno", "Médio", "Grande"]).withMessage("O campo 'porte' deve ser 'pequeno', 'médio' ou 'grande'"),
 
         body("isCastrado")
             .notEmpty().withMessage("Selecione se o animal é castrado")
