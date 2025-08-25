@@ -41,6 +41,26 @@ export async function getAllPets(req: Request, res: Response) {
     }
 }
 
+export async function getCats(req: Request, res: Response) {
+    try {
+        const cat = await PetModel.find({ tipo: "Gato" });
+        return res.status(200).json(cat)
+    } catch (e:any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+        return res.status(500).json({ error: "Erro no sistema, entre em contato com o suporte" })
+    }
+}
+
+export async function getDogs(req: Request, res: Response) {
+    try {
+        const cat = await PetModel.find({ tipo: "Cachorro" });
+        return res.status(200).json(cat)
+    } catch (e:any) {
+        Logger.error(`Erro no sistema: ${e.message}`)
+        return res.status(500).json({ error: "Erro no sistema, entre em contato com o suporte" })
+    }
+}
+
 export async function deletePet(req: Request, res: Response) {
     try {
         const id = req.params.id;
@@ -51,7 +71,7 @@ export async function deletePet(req: Request, res: Response) {
         }
 
         await pet.deleteOne()
-        return res.status(200).json({msg: "Pet excluido com sucesso"})
+        return res.status(200).json({ msg: "Pet excluido com sucesso" })
 
     } catch (e: any) {
         Logger.error(`Erro no sistema: ${e.message}`)
@@ -61,16 +81,16 @@ export async function deletePet(req: Request, res: Response) {
 }
 
 
-export async function updatePet (req:Request, res:Response) {
+export async function updatePet(req: Request, res: Response) {
     try {
         const id = req.params.id;
         const body = req.body
         const pet = await PetModel.findById(id)
-        if(!pet){
-            return res.status(404).json({error: "Pet não encontrado"})
+        if (!pet) {
+            return res.status(404).json({ error: "Pet não encontrado" })
         }
 
-        await PetModel.updateOne({ _id: id}, body)
+        await PetModel.updateOne({ _id: id }, body)
         return res.status(200).json(body);
 
     } catch (e: any) {
