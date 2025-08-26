@@ -370,3 +370,10 @@
 2025-08-25 14:54:05 - [32minfo[39m: [32mAplicação funcionando na porta 3000[39m
 2025-08-25 14:54:09 - [32minfo[39m: [32mConectou ao banco de dados[39m
 2025-08-25 14:54:09 - [32minfo[39m: [32mAplicação funcionando na porta 3000[39m
+2025-08-25 15:05:23 - [32minfo[39m: [32mConectou ao banco de dados[39m
+2025-08-25 15:05:23 - [32minfo[39m: [32mAplicação funcionando na porta 3000[39m
+2025-08-25 16:29:59 - [32minfo[39m: [32mConectou ao banco de dados[39m
+2025-08-25 16:29:59 - [32minfo[39m: [32mAplicação funcionando na porta 3000[39m
+2025-08-26 09:16:57 - [32minfo[39m: [32mConectou ao banco de dados[39m
+2025-08-26 09:16:57 - [32minfo[39m: [32mAplicação funcionando na porta 3000[39m
+2025-08-26 09:19:43 - [31merror[39m: [31mErro no sistema: Cast to ObjectId failed for value "dog" (type string) at path "_id" for model "Pet"[39m
