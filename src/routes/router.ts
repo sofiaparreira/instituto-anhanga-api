@@ -1,5 +1,5 @@
 import {Router, Request, Response} from "express";
-import { createPet, deletePet, getAllPets, getPetById, updatePet } from "../controllers/petController";
+import { createPet, deletePet, getAllPets, getCats, getDogs, getPetById, updatePet } from "../controllers/petController";
 import { validate } from "../middlewares/handleValidation";
 import { petBodyValidation } from "../middlewares/petMiddleware";
 import { login } from "../controllers/userController";
@@ -15,6 +15,8 @@ const router = Router();
 export default router
     .post("/pet", authMiddleware, petBodyValidation(), validate, createPet)
     .get("/pet", getAllPets)
+    .get("/pet/cats", getCats)
+    .get("/pet/dogs", getDogs)
     .get("/pet/:id", getPetById)
     .delete("/pet/:id", authMiddleware, deletePet)
     .patch("/pet/:id", authMiddleware, petBodyValidation(), validate, updatePet)

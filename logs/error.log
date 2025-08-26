@@ -1,2 +1,1 @@
 2025-08-23 11:35:44 - [31merror[39m: [31mErro no sistema ao get by id pet: Cast to ObjectId failed for value "68a9d17d1e2804762b52955" (type string) at path "_id" for model "Pet"[39m
-2025-08-26 09:19:43 - [31merror[39m: [31mErro no sistema: Cast to ObjectId failed for value "dog" (type string) at path "_id" for model "Pet"[39m
